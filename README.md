@@ -24,21 +24,26 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-### Установка библиотек
+### Библиотеки
 
 - Python 3.11
-- pip install Django==5.0.1
-- pip install pillow==10.2.0
+- Django==5.0.1
+- pillow10.2.0
 
 ### Установите зависимости:
 
 ```
-pip install -r requirements.txt
+ pip install -r requirements.txt
 ```
 
 ### Настройка базы данных
 
-Создайте суперпользователя для доступа к админ-панели:
+Применить миграции:
+```
+./manage.py migrate
+```
+
+Создание суперпользователя для доступа к админ-панели:
 
 ```
 ./manage.py createsuperuser
@@ -46,11 +51,26 @@ pip install -r requirements.txt
 
 ### Запуск сервера разработки
 
-Запустите сервер разработки Django:
+Запуск сервер разработки Django:
 
 ```
 ./manage.py runserver
 ```
+
+### Запуск PostgresSQL
+
+Загрузка библиотек:
+```
+psycopg2-binary==2.9.9
+psycopg2==2.9.9
+python-decouple==3.8 - для шифровки данных(.env)
+```
+Создать файлы:
+```
+Dockerfile
+docker-compose.yml
+```
+
 
 ### Информация по командам для проекта
 
@@ -61,6 +81,7 @@ pip install -r requirements.txt
 ./manage.py migrate - применение миграций
 ./manage.py createsuperuser - создание супер юзера
 ./manage.py startapp users - создание приложения для авторизации
+docker-compose exec web python manage.py test - запуск теста с db Docker
 ```
 
 Добавление объекта через python Console:
